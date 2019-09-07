@@ -13,7 +13,10 @@
             @blur="ageBlur(formData.age)"
             autocomplete="off"
           />
-          <label class="input-label" v-bind:class="{ active: formData.age.touched}">Enter your age</label>
+          <label
+            class="input-label"
+            v-bind:class="{ active: formData.age.touched}"
+          >{{placeholderStr}}</label>
           <span
             id="heroCalculatorAge_error"
             v-bind:class="{ 'validation-warning': formData.age.hasError}"
@@ -52,6 +55,7 @@
             type="tel"
             maxlength="4"
             class="form-control"
+            v-model="formData.postCode.value"
             @keypress="onTouch($event,formData.postCode)"
             required
           />
@@ -76,6 +80,7 @@
 </template>
 
 <script>
+import { strip } from "../util/common";
 export default {
   name: "Calculator-form",
   props: {
@@ -121,7 +126,7 @@ export default {
     homeDisplay: {
       get() {
         if (this.formData.homeValue.value) {
-          const stripped = this.formData.homeValue.value.replace(/[$,]/g, "");
+          const stripped = strip(this.formData.homeValue.value);
           if (stripped) {
             const formattedStripped = parseInt(stripped).toLocaleString("en", {
               currency: "USD",
@@ -145,25 +150,6 @@ export default {
       }
     }
   },
-  watch: {
-    ageValue(value) {
-      this.formData.age.errorMessage = "Minimum age is 60 years";
-      this.formData.age.hasError = false;
-      if (this.ageValidate(value)) {
-        this.formData.age.hasError = true;
-      }
-      if (value > 120) {
-        this.formData.age.errorMessage =
-          "Are you intending to beat the world record? :P";
-      }
-    },
-    homeValue(value) {
-      this.formData.homeValue.hasError = false;
-      if (this.homeValueValidate(value)) {
-        this.formData.homeValue.hasError = true;
-      }
-    }
-  },
 
   methods: {
     onTouch(e, input) {
@@ -182,29 +168,86 @@ export default {
         input.value = input.previousValue ? input.previousValue : 0;
         input.touched = true;
       }
+      if (!this.ageValidate(input.value)) {
+        input.hasError = true;
+      } else {
+        input.hasError = false;
+      }
+      input.errorMessage = "Minimum age is 60 years";
+      if (input.value > 120) {
+        input.errorMessage = "Are you intending to beat the world record? :P";
+      }
     },
     homeBlur(input) {
       input.touched = true;
       if (!input.value) {
         input.value = input.previousValue ? input.previousValue : "$";
       }
+      if (!this.homeValueValidate(input.value)) {
+        input.hasError = true;
+      } else {
+        input.hasError = false;
+      }
     },
-    calculate() {},
+    async calculate() {
+      if (this.validate()) {
+        await this.$store.dispatch("postcode/getPostcodeValidation", {
+          postcode: this.formData.postCode.value
+        });
+        const lvr = await this.$store.dispatch("age/getLvrByAge", {
+          age: this.formData.age.value
+        });
+
+        var stripped = strip(this.formData.homeValue.value);
+         await this.$store.dispatch("postcode/clearResult");
+        await this.$store.dispatch("postcode/setResult", {
+          houseValue: stripped,
+          lvr
+        });
+      }
+    },
     validate() {
-      let valid =true;
-      if(!this.ageValidate(this.formData.age.value)){
-        valid=false;
+      let valid = true;
+      if (
+        !this.formData.age.value ||
+        !this.ageValidate(this.formData.age.value)
+      ) {
+        this.formData.age.hasError = true;
+        this.formData.age.touched = true;
+        if (!this.formData.age.value) {
+          this.formData.age.value = 0;
+        }
+        valid = false;
       }
-        if(!this.homeValueValidate(this.formData.homeValue.value)){
-        valid=false;
+      if (
+        !this.formData.homeValue.value ||
+        !this.homeValueValidate(this.formData.homeValue.value)
+      ) {
+        this.formData.homeValue.hasError = true;
+        this.formData.homeValue.touched = true;
+        if (!this.formData.homeValue.value) {
+          this.formData.homeValue.value = "$";
+        }
+        valid = false;
       }
+      if (!this.postCodeValidate()) {
+        valid = false;
+      }
+
+      return valid;
     },
     ageValidate(value) {
-      return value < 60 || value > 120;
+      return value >= 60 && value <= 120;
     },
     homeValueValidate(value) {
-      var stripped = value.replace(/[$,]/g, "");
-      return !stripped || stripped < 200000;
+      var stripped = strip(value);
+      return stripped && stripped >= 200000;
+    },
+    postCodeValidate() {
+      return (
+        this.formData.postCode.value &&
+        this.formData.postCode.value.length === 4
+      );
     }
   }
 };
