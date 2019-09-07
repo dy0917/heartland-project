@@ -1,9 +1,6 @@
  
  <template>
-  <div
-    class="container-fluid px-0 js-calculator-reverse-mortgage-widget__result"
-  
-  >
+  <div class="container-fluid px-0 js-calculator-reverse-mortgage-widget__result" style="display:none">
     <div class="row mb-3">
       <div class="col-12 pt-sm-2 text-center">
         <span id="heroCalculatorPostcode_error">{{getMessage}}</span>
@@ -30,22 +27,33 @@
           type="submit"
           id="js-transfer-to-reverse-mortgage-application"
           class="btn btn-lg btn-secondary step-1-go-next my-3"
+          v-on:click.prevent="resetForm()"
         >Start application</button>
       </div>
     </div>
   </div>
 </template>
-          <script>
+<script>
 import { mapGetters } from "vuex";
 import $ from "jquery";
 export default {
   computed: {
     ...mapGetters("postcode", ["getMessage"]),
     ...mapGetters("postcode", ["getResult"]),
+    ...mapGetters("ui", ["getUpdateResult"])
   },
   watch: {
-    getMessage() {
+    getUpdateResult() {
       $(".js-calculator-reverse-mortgage-widget__result").slideDown(1500);
+      $(".js-small-calculator-result").fadeOut(300, function() {
+        $(".js-small-calculator-result").fadeIn(300);
+      });
+    }
+  },
+  methods: {
+    resetForm() {
+      $(".js-calculator-reverse-mortgage-widget__result").hide()
+      this.$store.dispatch("ui/setResetFrom");
     }
   }
 };

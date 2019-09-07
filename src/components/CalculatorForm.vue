@@ -70,7 +70,7 @@
         <div
           class="btn btn-lg btn-primary small-calculator-calculate-btn js-hero-calculator-calculate-btn my-0"
           v-on:click="calculate()"
-        >Calculate</div>
+        >{{buttonText}}</div>
       </div>
       <div class="col-12">
         <span id="heroCalculatorPostcode_error"></span>
@@ -81,6 +81,7 @@
 
 <script>
 import { strip } from "../util/common";
+import { mapGetters } from "vuex";
 export default {
   name: "Calculator-form",
   props: {
@@ -89,8 +90,36 @@ export default {
       required: true
     }
   },
+
+  watch: {
+    getUpdateResetForm() {
+      this. buttonText= "Calculate";
+      this.formData.age = {
+        value: undefined,
+        touched: false,
+        hasError: false,
+        errorMessage: "Minimum age is 60 years",
+        previousValue: undefined
+      };
+      this.formData.homeValue = {
+        value: undefined,
+        touched: false,
+        hasError: false,
+        errorMessage: "Minimum property value is $200,000",
+        previousValue: undefined
+      };
+      this.formData.postCode = {
+        value: undefined,
+        touched: false,
+        hasError: false,
+        errorMessage: "",
+        previousValue: undefined
+      };
+    }
+  },
   data() {
     return {
+      buttonText: "Calculate",
       formData: {
         age: {
           value: undefined,
@@ -117,6 +146,7 @@ export default {
     };
   },
   computed: {
+     ...mapGetters("ui", ["getUpdateResetForm"]),
     ageValue() {
       return this.formData.age.value;
     },
@@ -199,11 +229,13 @@ export default {
         });
 
         var stripped = strip(this.formData.homeValue.value);
-         await this.$store.dispatch("postcode/clearResult");
+        await this.$store.dispatch("postcode/clearResult");
         await this.$store.dispatch("postcode/setResult", {
           houseValue: stripped,
           lvr
         });
+        await this.$store.dispatch("ui/setResult");
+        this.buttonText = "Recalculate";
       }
     },
     validate() {
