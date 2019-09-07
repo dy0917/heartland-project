@@ -190,7 +190,15 @@ export default {
       }
     },
     calculate() {},
-    validate() {},
+    validate() {
+      let valid =true;
+      if(!this.ageValidate(this.formData.age.value)){
+        valid=false;
+      }
+        if(!this.homeValueValidate(this.formData.homeValue.value)){
+        valid=false;
+      }
+    },
     ageValidate(value) {
       return value < 60 || value > 120;
     },
