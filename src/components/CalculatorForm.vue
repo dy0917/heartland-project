@@ -8,6 +8,7 @@
             maxlength="3"
             class="form-control"
             v-model="formData.age.value"
+            @focus="onFocus(formData.age)"
             @keypress="onTouch($event,formData.age)"
             @blur="ageBlur(formData.age)"
             autocomplete="off"
@@ -29,6 +30,7 @@
             v-model="homeDisplay"
             @keypress="onTouch($event,formData.homeValue)"
             @blur="homeBlur(formData.homeValue)"
+            @focus="onFocus(formData.homeValue)"
             required
             autocomplete="off"
           />
@@ -49,19 +51,21 @@
           <input
             type="tel"
             maxlength="4"
-            class="form-control calculator-reverse-mortgage-widget__postCode js-calculator-reverse-mortgage-widget__postCode"
-            id="heroCalculatorPostcode"
-            name="postcode"
-            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            class="form-control"
+            @keypress="onTouch($event,formData.postCode)"
             required
           />
-          <label class="input-label">Enter your postcode</label>
+          <label
+            class="input-label"
+            v-bind:class="{ active: formData.postCode.touched}"
+          >Enter your postcode</label>
         </div>
       </div>
 
       <div class="mx-auto my-4">
         <div
           class="btn btn-lg btn-primary small-calculator-calculate-btn js-hero-calculator-calculate-btn my-0"
+          v-on:click="calculate()"
         >Calculate</div>
       </div>
       <div class="col-12">
@@ -74,6 +78,12 @@
 <script>
 export default {
   name: "Calculator-form",
+  props: {
+    placeholderStr: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       formData: {
@@ -81,13 +91,22 @@ export default {
           value: undefined,
           touched: false,
           hasError: false,
-          errorMessage: "Minimum age is 60 years"
+          errorMessage: "Minimum age is 60 years",
+          previousValue: undefined
         },
         homeValue: {
           value: undefined,
           touched: false,
           hasError: false,
-          errorMessage: "Minimum property value is $200,000"
+          errorMessage: "Minimum property value is $200,000",
+          previousValue: undefined
+        },
+        postCode: {
+          value: undefined,
+          touched: false,
+          hasError: false,
+          errorMessage: "",
+          previousValue: undefined
         }
       }
     };
@@ -101,12 +120,8 @@ export default {
     },
     homeDisplay: {
       get() {
-        if (this.formData.homeValue.value === "$") {
-          return this.formData.homeValue.value;
-        }
         if (this.formData.homeValue.value) {
-          var stripped = this.formData.homeValue.value.replace(/[$,]/g, "");
-          console.log(stripped);
+          const stripped = this.formData.homeValue.value.replace(/[$,]/g, "");
           if (stripped) {
             const formattedStripped = parseInt(stripped).toLocaleString("en", {
               currency: "USD",
@@ -114,11 +129,18 @@ export default {
               maximumFractionDigits: 7
             });
             return "$" + formattedStripped;
+          } else {
+            return "$";
           }
         }
+
         return "";
       },
       set(newValue) {
+        const strippedZero = newValue.replace(/0/g, "");
+        if (strippedZero === "$") {
+          this.formData.homeValue.value = 0;
+        }
         this.formData.homeValue.value = newValue;
       }
     }
@@ -127,7 +149,7 @@ export default {
     ageValue(value) {
       this.formData.age.errorMessage = "Minimum age is 60 years";
       this.formData.age.hasError = false;
-      if (value < 60 || value > 120) {
+      if (this.ageValidate(value)) {
         this.formData.age.hasError = true;
       }
       if (value > 120) {
@@ -136,9 +158,8 @@ export default {
       }
     },
     homeValue(value) {
-      var stripped = value.replace(/[$,]/g, "");
       this.formData.homeValue.hasError = false;
-      if (stripped < 200000) {
+      if (this.homeValueValidate(value)) {
         this.formData.homeValue.hasError = true;
       }
     }
@@ -152,17 +173,30 @@ export default {
       }
       e.preventDefault();
     },
+    onFocus(input) {
+      input.previousValue = input.value;
+      input.value = "";
+    },
     ageBlur(input) {
       if (!input.value) {
-        input.value = 0;
+        input.value = input.previousValue ? input.previousValue : 0;
         input.touched = true;
       }
     },
     homeBlur(input) {
       input.touched = true;
-      if (input.value == 0) {
-        input.value = "$";
+      if (!input.value) {
+        input.value = input.previousValue ? input.previousValue : "$";
       }
+    },
+    calculate() {},
+    validate() {},
+    ageValidate(value) {
+      return value < 60 || value > 120;
+    },
+    homeValueValidate(value) {
+      var stripped = value.replace(/[$,]/g, "");
+      return !stripped || stripped < 200000;
     }
   }
 };

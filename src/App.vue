@@ -34,6 +34,7 @@
                   id="borrowers1"
                   name="hero_calc_borrowers"
                   value="1"
+                  v-on:change="setPlaceholder('Enter your age')"
                   checked
                 />
                 <label
@@ -47,6 +48,7 @@
                   type="radio"
                   id="borrowers2"
                   name="hero_calc_borrowers"
+                  v-on:change="setPlaceholder('Age of youngest borrower ')"
                   value="2"
                 />
                 <label
@@ -56,7 +58,7 @@
               </div>
             </div>
           </div>
-          <CalculatorForm />
+          <CalculatorForm :placeholderStr="placeholder" />
 
           <div class="container-fluid px-0 js-calculator-reverse-mortgage-widget__result">
             <div class="row mb-3">
@@ -100,17 +102,17 @@ export default {
   name: "app",
   components: {
     CalculatorForm
+  },
+  data() {
+    return {
+      placeholder: "Enter your age"
+    };
+  },
+  methods: {
+    setPlaceholder(value) {
+      this.placeholder = value;
+    }
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
