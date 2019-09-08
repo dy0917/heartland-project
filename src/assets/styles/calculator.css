@@ -1,0 +1,243 @@
+
+
+/* Seniors finance calculator below hero section */
+
+.seniors-finance-insight-guide__insight-guide-form .input-label,
+.contact-us-general-enquiries__form .input-label,
+.seniors-finance-below-hero-calculator .input-label {
+    font-weight: 500;
+    position: absolute;
+    left: 7px;
+    bottom: 1px;
+    pointer-events: none;
+    transition: all .25s ease;
+}
+
+.seniors-finance-insight-guide__insight-guide-form .form-control,
+.contact-us-general-enquiries__form .form-control,
+.seniors-finance-below-hero-calculator .form-control
+{
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+    border-radius: 0;
+}
+
+.seniors-finance-below-hero-calculator .input-label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+    .seniors-finance-insight-guide__insight-guide-form .form-control:focus,
+    .contact-us-general-enquiries__form .form-control:focus,
+    .seniors-finance-below-hero-calculator .form-control:focus
+    {
+        box-shadow: none;
+    }
+
+        .seniors-finance-insight-guide__insight-guide-form .form-control:focus ~ .input-label,
+        .contact-us-general-enquiries__form .form-control:focus ~ .input-label,
+        .seniors-finance-below-hero-calculator .form-control:focus ~ .input-label,
+        .input-label.active {
+            bottom: 35px;
+            font-size: 1.5rem;
+        }
+
+.seniors-finance-below-hero-calculator .form-control {
+    border-width: 2px;
+}
+        .seniors-finance-below-hero-calculator .form-control:focus ~ .input-label {
+            bottom: 40px;
+        }
+
+.seniors-finance-insight-guide__insight-guide-form label.error,
+.contact-us-general-enquiries__form label.error,
+.seniors-finance-below-hero-calculator label.error {
+    color: rgba(255, 0, 0, .75);
+    font-weight: 500;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+}
+
+.hero-calculator-help-wrapper .rad {
+    line-height: 12px;
+}
+
+    .hero-calculator-help-wrapper .rad input[type=radio] {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .hero-calculator-help-wrapper .rad .check {
+        display: inline-block;
+        cursor: pointer;
+        border: 2px solid #00c891;
+        border-radius: 100%;
+        height: 25px;
+        width: 25px;
+        z-index: 5;
+        -webkit-transition: background-color .09s linear;
+        -o-transition: background-color .09s linear;
+        transition: background-color .09s linear;
+    }
+
+        .hero-calculator-help-wrapper .rad .check::before {
+            display: block;
+            content: "";
+            border-radius: 100%;
+            height: 15px;
+            width: 15px;
+            min-width: 15px;
+            max-width: 15px;
+            margin: 3px auto auto auto;
+            -webkit-transition: background .1s linear;
+            -o-transition: background .1s linear;
+            transition: background .1s linear;
+        }
+        
+.seniors-finance-hero-calculator-help__radio-label {
+    min-width: 120px;
+}
+
+.hero-calculator-help-wrapper input[type=radio]:checked ~ .seniors-finance-hero-calculator-help__radio-label {
+    background: #0e263e;
+    color: #fff;
+}
+
+.hero-calculator-help-wrapper input[type=radio]:checked ~ .seniors-finance-insight-guide__radio-label {
+    background: #0e263e;
+    color: #fff;
+}
+
+.hero-calculator-help-wrapper div.row {
+    margin-bottom: 45px;
+}
+
+.hero-calculator-help-wrapper label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.hero-calculator-help-wrapper .what-is-a-reverse-mortgage-hero-calculator__second-borrower {
+    display: none;
+}
+
+.hero-calculator-help-wrapper .under-input-message {
+    font-size: 1.5rem;
+    padding-top: 5px;
+    display: block;
+}
+
+.hero-calculator-help-wrapper .what-is-a-reverse-mortgage-hero-calculator__result {
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+@media(max-width: 575px) {
+    .hero-calculator-help-wrapper .what-is-a-reverse-mortgage-hero-calculator__result {
+        font-size: 4rem;
+    }
+}
+
+.index-below-hero-section {
+    background-color: #e9f1f8;
+}
+
+.calculator-reverse-mortgage-widget {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 10px 10px 24px 0px rgba(0,0,0,0.15);
+}
+.calculator-reverse-mortgage-widget--home {
+    margin-top: -60px;
+}
+
+@media (min-width: 576px) {
+    .calculator-reverse-mortgage-widget--home {
+        margin-top: -100px;
+    }
+}
+
+@media (min-width: 992px) {
+    .calculator-reverse-mortgage-widget--home {
+        margin-top: -255px;
+    }
+}
+
+.calculator-reverse-mortgage-widget--standalone {
+    margin-top: 0;
+}
+
+.calculator-reverse-mortgage-widget .form-control {
+    background-color: #f5f8f9;
+}
+
+.seniors-finance-what-is-a-reverse-mortgage__button {
+    max-width: 200px;
+}
+.seniors-finance-what-is-a-reverse-mortgage__consumer-trusted-logo {
+    max-width: 175px;
+}
+
+.seniors-finance-hero__heading--tinted {
+    color: #00c891 !important;
+}
+
+.calculator-reverse-mortgage-widget__heading--tinted {
+    color: #0e263e !important;
+    text-align: center;
+    font-size: 2.7rem;
+}
+
+@media(min-width: 576px) {
+    .calculator-reverse-mortgage-widget__heading--tinted {
+        margin-left: -3rem;
+        margin-right: -3rem;
+    }
+}
+
+#heroCalculatorHouseValue_error,
+#heroCalculatorAge_error,
+#heroCalculatorSuburb_error
+{
+    color: hsla(214, 16%, 32%, 1);
+    font-size: 1.6rem;
+    display: block;
+    position: absolute;
+    left: 6px;
+}
+
+#heroCalculatorHouseValue_error.validation-warning,
+#heroCalculatorAge_error.validation-warning,
+#heroCalculatorPostcode_error.validation-warning,
+#heroCalculatorSuburb_error.validation-warning
+{
+    color: #cc2222;
+}
+
+.validation-warning--green {
+    color: #6f9d56 !important;
+}
+
+.validation-warning--orange {
+    color: #ab5610 !important;
+}
+
+#heroCalculatorPostcode_error {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.1rem;
+    color: #0052FF;
+    margin-bottom: 15px;
+}
+
+#hero-calculator-scroll-down {
+    color: #0e263e;
+}

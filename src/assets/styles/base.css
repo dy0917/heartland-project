@@ -1,0 +1,335 @@
+@font-face {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+    /* src: url('../../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'); */
+}
+
+@font-face {
+    font-family: ArrowIcons;
+    src: url(data:application/octet-stream;base64,d09GRk9UVE8AAAZUAAoAAAAAB6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAADKAAAAx8AAAOKkWuAp0dTVUIAAAZIAAAACgAAAAoAAQAAT1MvMgAAAXAAAABJAAAAYGcdjVZjbWFwAAACvAAAAFYAAACUKEhKfWhlYWQAAAD8AAAAMAAAADYJAklYaGhlYQAAAVAAAAAgAAAAJAYoAa5obXR4AAABLAAAACQAAAAoEOAAWW1heHAAAAD0AAAABgAAAAYAClAAbmFtZQAAAbwAAAD%2FAAABuXejDuxwb3N0AAADFAAAABMAAAAg%2F7gAMgAAUAAACgAAeNpjYGRgYABifeaSpHh%2Bm68MzMwHgCIMl08yqyDo%2F95Mkcy8QC4zAxNIFAD8tAiweNpjfMAQyfiAgYEpgoGBcQmQlmFgYPgAZOtAcQZEDgCHaQVGeNpjYGRgYD7z34eBgSmCgeH%2Ff6ZIBqAICuACAHpYBNp42mNgZtzAOIGBlYGDqYDJgYGBwQNCMwYwGDEcA%2FKBUthBqHe4H4MDg4L6Imae%2Fz4MB5jPMGwBCjOC5Bi9mKYAKQUGBgAFHgteAAAAeNplkMFqwkAURU9itBVKF6XLLrLsxiGKMYH0B4IgoqjdRokajAmNUfolhX5Df7IvZhBt5zHMeffduQwDPPCFQbWM81mzyZ3uocEz95qtK0%2BTN140t2jzLk7DaotiEmk2eWSlucErH5otnvjW3OSTH82tSg8n8eaYRkVXOY4TzIaLURB2tDaPi0OSZ3Y9G09tx6lxm5erPDtVA%2BX7wT7axXm5Vmmy7ClXDfqe515CCJkQs%2BFIKk8t6KJwzhUwY8iCkVBI54%2FvvzKXruBAQk6GfZM0ZipKxdfqVpylfErlP11uKHypgL2k7iSz8qxFTSV5SU%2FIlT2gjyfl%2FgKN9EDsAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAHEEACj8QNOBhYGOyDNAYRMQFpBcZL6ov%2F%2Foaw5%2F%2F%2F%2Ff3kvH8iD2McCxExAO1kYWIE2cjCwAwAgUQwvAAB42mNgZgCD%2F1sZjBiwAAAswgHqAHjaNVFbbxNHGN2JMmtlNnIoZFFx1F2nDoTWgJLIhRQqWlRowyXiUkqE1IZLVW0dJzHYjpAhxnbYi8HXdWxsEKCIi0DdqjxVyhOKkBBS%2FdAX%2FkJfmiCe0Gz4orbjLNFo5uj79B19Z85BXGsLhxAiB7ef%2BFmZGj8XaVb9dgdn%2B5Dd02J%2F2JqFIXtpeQ5Lc6h1YzKbXcN2F%2F2qg373wZ3ly%2Bs5gpCwfpO3d8dnXwyfOheJhC9FgsovsanJ4MCuzw84sN%2BBb1Zh34ADfU7za6fq%2Fyl8Ib7K9E4Eo9HgpHLQu6aL45CB8ug6yqAbKIeyqMAhjjD1nM49596hbqQgHf2B%2Fm5xt3S8sqXlORFe%2FHuSvuD3vesUQ4eVxjgEfm08PWK5%2FoF14lBjDAJvXI0xMRS0%2BMVjbGLIbzV%2BP2y5aOC46IfAb7TzT5cFbSJwEKCc9eXifGgqtOBahN3vWy7aOS76f1zkrVNiaNw1NIpfhyBg8X%2FN428t3v2KJl6KtVqxWpXpCD2Bq5XZW3XPrWv1dMVHEmZy9pr8dhsGdQuhKt%2FTh9Mz6nTCE34Yeyy56byfUHMzqaWrEpRpHldmrpqJrosXPyV0N%2BzAsMJYKzwMwjacTmtXGe9%2B7InkrtPz3aRoaIWPSUEtGjL1wUcYFnoJXeChG7qwpmfUHkI30XsvRdMsmKZMs9TwEsjR67ik6%2Fk14hk4jVcGe4k9yMMojGDNyKiqRy1opi5phUrG7HLDnkfdxOHktZIu072wB9jFhpHReoj3UXNF3lmReb%2FC0eaMx%2BESO1NY1w2myfuMuXW7VKvJ9CQ9im9Wy3XmllpLVX0kWUzNpmW6E%2FrY8ePkjLaV%2FPCMWVTeTJidTYtyuJpuWhSOMYsuwBhMgNK0dCtxS3O7%2Fmtvy7YL9lKn7RfvbODaEerw%2BXfuPfT92WDkiopLpaJZ9pQNUy9JAlNdyjVVH6PDTDV7saB2TadSCVWQYIQeZ2F8QgTVM30zdZtFlcOVSmU1WYFXolFFeRB9Kgt8PJmMx2vJu7IwvZoOS9XRFwsLsXCylKjMyGxXrV5kXxb%2BBxsddR0AAAEAAAAAAAAAAAAA) format('woff');
+}
+
+*::-moz-selection {
+    color: #fff;
+    background: #006778;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+*::selection {
+    color: #fff;
+    background: #006778;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+:root {
+    /* commenting this gut so position sticky can work. - CSS trick - KH. */
+    /*overflow-x: hidden;*/
+    height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    position: relative;
+    background: #fff;
+    color: hsla(213, 16%, 32%, 1);
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.7rem;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+
+footer {
+    position: relative;
+    z-index: 100;
+}
+
+
+
+.container-fluid {
+    max-width: 1200px;
+}
+
+.row-full {
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    height: 100px;
+    margin-top: 100px;
+    left: 50%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #0a2642;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+}
+
+p {
+    color: hsla(217, 16%, 31%, 1);
+    margin-bottom: 15px;
+}
+
+.dark-background-font-color h1,
+.dark-background-font-color h2,
+.dark-background-font-color h3,
+.dark-background-font-color h4,
+.dark-background-font-color h5,
+.dark-background-font-color h6,
+.dark-background-font-color p {
+    color: #fff;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 3.8rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+
+.text-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+}
+
+.anchor--card {
+    top: -30px;
+}
+
+.card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    text-align: left;
+    margin-bottom: -4px;
+}
+
+.card.card--white-rounded {
+    border-radius: 20px;
+    background: white;
+    margin-bottom: 30px;
+}
+
+.card.card--white-rounded:hover {
+    box-shadow: 0 15px 15px rgba(50,50,93,.03), 0 5px 15px rgba(0,0,0,.07);
+}
+
+    .card.card--white-rounded .card-body {
+        padding: 18px;
+    }
+
+@media (min-width: 576px) {
+    .card.card-421 {
+        min-width: 40%;
+    }
+}
+
+@media (min-width: 992px) {
+    .card.card-421 {
+        min-width: 20%;
+    }
+}
+
+.card-header {
+    font-size: 2.2rem;
+    line-height: 1;
+    border-radius: 0;
+    background-color: #fff;
+    padding: 15px 55px 15px 25px;
+    cursor: pointer;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1.4;
+    -webkit-transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, padding 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 100ms ease-out, opacity 150ms linear, border 0ms ease 207ms;
+    -o-transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, padding 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 100ms ease-out, opacity 150ms linear, border 0ms ease 207ms;
+    transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, padding 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 100ms ease-out, opacity 150ms linear, border 0ms ease 207ms;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.card-img-bg {
+    width: 100%;
+    padding-bottom: 75%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.accordion-opened {
+    margin-top: 16px;
+    padding-top: 23px;
+    border-bottom: 0;
+}
+
+.accordion > .card:last-of-type {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.card-header:first-child {
+    border-radius: 0;
+}
+
+.card:first-of-type .accordion-opened {
+    margin-top: 0;
+}
+
+.accordion-opened + div > .card-block {
+    margin-bottom: 16px;
+}
+
+.card-header--icons:before {
+    content: "+";
+    font-size: 2rem;
+    opacity: 0.8;
+    position: absolute;
+    /*text-shadow: 0px -1px, 1px 0px, 1px -1px;*/
+    top: 15px;
+    right: 25px;
+    font-weight: 500;
+    border: 1px solid;
+    border-radius: 30px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.card-header--icons.accordion-opened:before {
+    content: "–";
+    line-height: 1;
+    letter-spacing: -2.2px;
+}
+
+.card-block {
+    padding: 10px 40px 30px 25px;
+    background: #fff;
+    /*border-bottom: 1px solid #e8e8e8;*/
+    border-top: 0;
+    border-radius: 0;
+    -webkit-transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    -o-transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.card-block--question {
+    line-height: 1.75;
+}
+
+.embed-responsive-16by9:before {
+    padding-top: 56.25%;
+}
+
+.embed-responsive-16by9 {
+    margin-bottom: 30px;
+}
+
+
+.fw-300 {
+    font-weight: 300 !important;
+}
+
+.fw-400 {
+    font-weight: 400 !important;
+}
+
+.fw-500 {
+    font-weight: 500 !important;
+}
+
+.fw-600 {
+    font-weight: 600 !important;
+}
+
+.fw-700 {
+    font-weight: 700 !important;
+}
+
+.fw-800 {
+    font-weight: 800 !important;
+}
+
+.fine-print {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.fine-print--smaller {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+}
+
+.form-control {
+    height: auto;
+    font-size: 1.7rem;
+    background-color: #f5fcfc;
+    border-radius: 0;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+    .form-control:focus,
+    .form-control:active,
+    .form-control:hover {
+        box-shadow: none;
+        border-color: #ced4da;
+    }
+
+.thead-green {
+    background: #00c891;
+    color: #fff;
+}
+
+.text-with-underline {
+    text-decoration: underline;
+}
